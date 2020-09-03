@@ -1,7 +1,7 @@
 <body style="background-color: grey">
   <style>
     .wooo {
-      animation: shake 500ms infinite;
+      animation: shake 500ms normal;
       pointer-events: none;
     }
 
@@ -52,21 +52,24 @@
     }
   </style>
   <img id="woooo" src="woooo.jpg" style="width: 100%; cursor: pointer; overflow: hidden;" alt="Ric Flair wooing the words 'woooooooooooooo'"/>
-  <audio id="wooo">
+  <audio id="wooo" preload="auto">
     <source src="https://peal.io/download/ofp0f" type="audio/mpeg">
   </audio>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("woooo").addEventListener("click", function woooo(event) {
         var wooo = document.getElementById("wooo");
+        wooo.playbackRate = 1.5;
         var woooo = event.target;
         wooo.play();
-        setTimeout(function wooo() {
+        setTimeout(function wooooo() {
           woooo.classList.toggle("wooo");
-        }, 200);
-        setTimeout(function wooo() {
+        }, 100);
+        setTimeout(function wooooo() {
           woooo.classList.toggle("wooo");
-        }, 700);
+          wooo.pause();
+          wooo.currentTime = 0;
+        }, 900);
       });
     });
   </script>
