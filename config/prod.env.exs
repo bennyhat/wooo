@@ -33,6 +33,6 @@ config :wooo, WoooWeb.Endpoint,
     port: String.to_integer(port),
     transport_options: [socket_opts: [:inet6]]
   ],
-  url: [host: hostname, port: port],
+  url: [host: hostname, port: 443],
   secret_key_base: secret_key_base,
   live_view: [signing_salt: live_view_signing_salt]
