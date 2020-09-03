@@ -13,9 +13,6 @@ config :wooo, WoooWeb.Endpoint,
       "--watch-stdin",
       cd: Path.expand("../assets", __DIR__)
     ]
-  ],
-  live_view: [
-    signing_salt: "SEKRAT"
   ]
 
 config :wooo, WoooWeb.Endpoint,
