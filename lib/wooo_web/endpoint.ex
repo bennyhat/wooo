@@ -5,7 +5,7 @@ defmodule WoooWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_woookie",
-    signing_salt: "SekoFX7T" # TODO - change this
+    signing_salt: "vZ7QJ1g3" # the other secrets + this are enough for this to be hardcoded
   ]
 
   use Phoenix.Endpoint, otp_app: :wooo

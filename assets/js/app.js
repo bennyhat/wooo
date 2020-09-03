@@ -1,5 +1,5 @@
 import normalize_css from 'normalize.css';
-import scss from "../css/app.scss";
+import scss from "../css/stylin.scss";
 
 import "phoenix_html";
 
