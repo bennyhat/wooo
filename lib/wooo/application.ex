@@ -8,6 +8,7 @@ defmodule Wooo.Application do
   def start(_type, _args) do
     children =
       [
+        {Phoenix.PubSub, [name: WoooWeb.PubSub, adapter: Phoenix.PubSub.PG2]},
         WoooWeb.Endpoint,
       ]
       |> List.flatten()
@@ -17,7 +18,7 @@ defmodule Wooo.Application do
   end
 
   def config_change(changed, _new, removed) do
-    AndiWeb.Endpoint.config_change(changed, removed)
+    WoooWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

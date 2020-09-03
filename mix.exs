@@ -27,7 +27,7 @@ defmodule Wooo.MixProject do
   defp deps do
     [
       {:distillery, "~> 2.1"},
-      {:phoenix, "~> 1.5.1"},
+      {:phoenix, "~> 1.5"},
       {:phoenix_ecto, "~> 4.1"},
       {:phoenix_live_view, "~> 0.14.4"},
       {:ecto_sql, "~> 3.4"},

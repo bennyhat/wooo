@@ -1,5 +1,5 @@
-defmodule Wooo.Router do
-  """
+defmodule WoooWeb.Router do
+  @moduledoc """
   The main router that is used for getting us to the LiveView page
   """
   use Phoenix.Router
@@ -11,7 +11,8 @@ defmodule Wooo.Router do
          "style-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com;" <>
          "script-src 'self' 'unsafe-inline' 'unsafe-eval';" <>
          "font-src https://fonts.gstatic.com data: 'self';" <>
-         "img-src 'self' data:;"
+         "img-src 'self' data:;" <>
+         "media-src *;"
 
   pipeline :browser do
     plug Plug.Logger

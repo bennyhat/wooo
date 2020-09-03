@@ -1,5 +1,5 @@
-defmodule Wooo.Endpoint do
-  """
+defmodule WoooWeb.Endpoint do
+  @moduledoc """
   The main endpoint that is run for hosting the LiveView app
   """
   @session_options [
@@ -29,12 +29,12 @@ defmodule Wooo.Endpoint do
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Phoenix.json_library()
+    json_decoder: Jason
 
   plug Plug.MethodOverride
   plug Plug.Head
 
   plug Plug.Session, @session_options
 
-  plug Wooo.Router
+  plug WoooWeb.Router
 end
