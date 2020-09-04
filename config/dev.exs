@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :wooo, WoooWeb.Endpoint,
   http: [port: 4000],
