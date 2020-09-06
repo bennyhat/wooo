@@ -69,7 +69,7 @@ config :wooo, WoooWeb.Endpoint,
   live_view: [signing_salt: live_view_signing_salt]
 
 config :wooo,
-  csp_connect_sources: Enum.map(allowed_origins_list, &String.replace(&1, "http", "ws"))
+  csp_connect_sources: Enum.map(allowed_origins_list, &String.replace(&1, "//", "wss://"))
 
 
 config :libcluster,
