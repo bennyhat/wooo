@@ -29,6 +29,9 @@ config :wooo, WoooWeb.Endpoint,
     ]
   ]
 
+config :wooo,
+  csp_connect_sources: ["ws://localhost:#{port}"]
+
 config :logger, :console, format: "[$level] $message\n"
 
 config :phoenix, :stacktrace_depth, 20
