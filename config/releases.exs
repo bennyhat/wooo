@@ -44,6 +44,20 @@ allowed_origins =
 
 allowed_origins_list = String.split(allowed_origins, ",")
 
+libcluster_k8s_selector =
+  System.get_env("LIBCLUSTER_KUBERNETES_SELECTOR") ||
+  raise """
+  environment variable LIBCLUSTER_KUBERNETES_SELECTOR is missing.
+  Please set it to what you expect the production site to cluster with
+  """
+
+libcluster_k8s_node_basename =
+  System.get_env("LIBCLUSTER_KUBERNETES_NODE_BASENAME") ||
+  raise """
+  environment variable LIBCLUSTER_KUBERNETES_NODE_BASENAME is missing.
+  Please set it to what you expect the production site to cluster with
+  """
+
 config :wooo, WoooWeb.Endpoint,
   http: [
     port: String.to_integer(port),
@@ -53,3 +67,14 @@ config :wooo, WoooWeb.Endpoint,
   url: [host: hostname, port: 443],
   secret_key_base: secret_key_base,
   live_view: [signing_salt: live_view_signing_salt]
+
+config :libcluster,
+  topologies: [
+    k8s: [
+      strategy: Cluster.Strategy.Kubernetes,
+      config: [
+        kubernetes_selector: libcluster_k8s_selector,
+        kubernetes_node_basename: libcluster_k8s_node_basename
+      ]
+    ]
+  ]

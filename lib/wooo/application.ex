@@ -6,8 +6,10 @@ defmodule Wooo.Application do
   use Application
 
   def start(_type, _args) do
+    topologies = Application.get_env(:libcluster, :topologies) || []
     children =
       [
+        {Cluster.Supervisor, [topologies, [name: Wooo.ClusterSupervisor]]},
         {Phoenix.PubSub, [name: WoooWeb.PubSub, adapter: Phoenix.PubSub.PG2]},
         WoooWeb.Endpoint,
       ]

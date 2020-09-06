@@ -29,3 +29,13 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 config :phoenix, :plug_init_mode, :runtime
+
+config :libcluster,
+  topologies: [
+    local: [
+      strategy: Elixir.Cluster.Strategy.Epmd,
+      config: [
+        hosts: [:"wooo@127.0.0.1", :"woooo@127.0.0.1"]
+      ]
+    ]
+  ]
