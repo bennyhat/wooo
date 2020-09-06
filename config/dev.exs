@@ -1,7 +1,12 @@
 import Config
 
+port = case System.get_env("PORT") do
+         nil -> 4000
+         string_port -> String.to_integer(string_port)
+       end
+
 config :wooo, WoooWeb.Endpoint,
-  http: [port: 4000],
+  http: [port: port],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
