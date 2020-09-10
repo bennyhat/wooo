@@ -8,9 +8,12 @@ defmodule WoooWeb.WoooLiveView do
   def render(assigns) do
     ~L"""
     <wooo>
-      <img id="woooo" phx-click="wooo" src="images/woooo.jpg" alt="Ric Flair wooing the words 'woooooooooooooo'"/>
+      <img id="woooo" src="images/woooo.jpg" alt="Ric Flair wooing the words 'woooooooooooooo'"/>
       <audio id="wooo" phx-hook="Wooo" preload="auto">
         <source src="https://peal.io/download/ofp0f" type="audio/mpeg">
+      </audio>
+      <audio id="hahawooo" preload="auto">
+        <source src="media/haha-wooo.mp3" type="audio/mpeg">
       </audio>
     </wooo>
     """
@@ -22,7 +25,7 @@ defmodule WoooWeb.WoooLiveView do
   end
 
   def handle_event("wooo", _data, socket) do
-    WoooWeb.Endpoint.broadcast("wooo", "woooo", %{})
+    WoooWeb.Endpoint.broadcast_from(self(), "wooo", "woooo", %{})
     {:noreply, socket}
   end
 

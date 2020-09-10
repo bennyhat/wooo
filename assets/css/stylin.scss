@@ -14,6 +14,11 @@ img#woooo {
     pointer-events: none;
 }
 
+.hahawooo {
+    animation: shake 1000ms normal;
+    pointer-events: none;
+}
+
 @keyframes shake {
     0% {
         transform: translate(1px, 1px) rotate(0deg) scale(1.00);

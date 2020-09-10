@@ -7,22 +7,41 @@ import { Socket } from 'phoenix';
 import { LiveSocket } from 'phoenix_live_view';
 
 let Hooks = {};
+
 Hooks.Wooo = {
     mounted() {
-        this.handleEvent("wooo", () => {
-            var wooo = document.getElementById("wooo");
-            var woooo = document.getElementById("woooo");
+        const wooo = document.getElementById("wooo");
+        const woooo = document.getElementById("woooo");
+        const hahawooo = document.getElementById("hahawooo");
 
-            wooo.playbackRate = 1.5;
+        const startJigglin = () => {
+            woooo.classList.add("wooo");
+        };
+        const stopJigglin = () => {
+            woooo.classList.remove("wooo");
+        };
+        const startLaughin = () => {
+            woooo.classList.add("hahawooo");
+        };
+        const stopLaughin = () => {
+            woooo.classList.remove("hahawooo");
+        };
+
+        wooo.playbackRate = 1.5;
+        hahawooo.playbackRate = 1.5;
+
+        hahawooo.addEventListener("playing", startLaughin);
+        hahawooo.addEventListener("ended", stopLaughin);
+        wooo.addEventListener("playing", startJigglin);
+        wooo.addEventListener("ended", stopJigglin);
+
+        this.handleEvent("wooo", () => {
             wooo.play();
-            setTimeout(() => {
-                woooo.classList.toggle("wooo");
-            }, 100);
-            setTimeout(() => {
-                woooo.classList.toggle("wooo");
-                wooo.pause();
-                wooo.currentTime = 0;
-            }, 900);
+        });
+
+        woooo.addEventListener("click", () => {
+            hahawooo.play();
+            this.pushEvent("wooo");
         });
     }
 };
