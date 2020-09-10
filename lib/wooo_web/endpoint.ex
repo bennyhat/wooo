@@ -16,7 +16,7 @@ defmodule WoooWeb.Endpoint do
     at: "/",
     from: :wooo,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css media fonts images js favicon.ico robots.txt)
 
   if code_reloading? do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
