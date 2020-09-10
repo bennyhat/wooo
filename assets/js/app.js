@@ -29,6 +29,7 @@ Hooks.Wooo = {
 
         wooo.playbackRate = 1.5;
         hahawooo.playbackRate = 1.5;
+        hahawooo.volume = 0.6;
 
         hahawooo.addEventListener("playing", startLaughin);
         hahawooo.addEventListener("ended", stopLaughin);
