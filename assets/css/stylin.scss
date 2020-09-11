@@ -1,12 +1,41 @@
-body {
-    background-color: grey;
-    padding: 1rem;
-}
-
 img#woooo {
     width: 100%;
     cursor: pointer;
     overflow: hidden;
+}
+
+wooo {
+    display: flex;
+}
+
+#mute {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 5rem;
+    height: 5rem;
+    background-color: grey;
+
+    cursor: pointer;
+
+    p {
+        font-family: Arial;
+        font-size: 1.25rem;
+        font-weight: bold;
+        transform: rotate(45deg) translate(1.25rem, 1rem);
+    }
+
+
+    &:hover {
+        width: 7rem;
+        height: 7rem;
+
+        p {
+            font-size: 2rem;
+            transform: rotate(45deg) translate(1.25rem, 0.5rem);
+        }
+    }
 }
 
 .wooo {
@@ -17,6 +46,25 @@ img#woooo {
 .hahawooo {
     animation: shake 5000ms normal;
     pointer-events: none;
+}
+
+wooo {
+    background-color: grey;
+    padding: 1.5rem;
+}
+
+wooo.stylin {
+    background-color: red;
+
+    img#woooo {
+        -webkit-mask-image: radial-gradient(transparent 10%, black);
+        animation: shake 400ms infinite;
+        pointer-events: none;
+    }
+
+    #mute {
+        display: none;
+    }
 }
 
 @keyframes shake {

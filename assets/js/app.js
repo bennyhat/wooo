@@ -13,6 +13,10 @@ Hooks.Wooo = {
         const wooo = document.getElementById("wooo");
         const woooo = document.getElementById("woooo");
         const hahawooo = document.getElementById("hahawooo");
+        const woooooo = document.querySelector("wooo");
+
+        const mute = document.getElementById("mute");
+        const stylin = document.getElementById("stylin");
 
         const startJigglin = () => {
             woooo.classList.add("wooo");
@@ -26,15 +30,25 @@ Hooks.Wooo = {
         const stopLaughin = () => {
             woooo.classList.remove("hahawooo");
         };
+        const startStylin = () => {
+            woooooo.classList.add("stylin");
+        };
+        const stopStylin = () => {
+            woooooo.classList.remove("stylin");
+        };
 
         wooo.playbackRate = 1.5;
         hahawooo.playbackRate = 1.5;
+        stylin.playbackRate = 1.25;
         hahawooo.volume = 0.6;
+        stylin.volume = 0.9;
 
         hahawooo.addEventListener("playing", startLaughin);
         hahawooo.addEventListener("ended", stopLaughin);
         wooo.addEventListener("playing", startJigglin);
         wooo.addEventListener("ended", stopJigglin);
+        stylin.addEventListener("playing", startStylin);
+        stylin.addEventListener("ended", stopStylin);
 
         this.handleEvent("wooo", () => {
             wooo.play();
@@ -43,6 +57,10 @@ Hooks.Wooo = {
         woooo.addEventListener("click", () => {
             hahawooo.play();
             this.pushEvent("wooo");
+        });
+
+        mute.addEventListener("click", () => {
+            stylin.play();
         });
     }
 };
