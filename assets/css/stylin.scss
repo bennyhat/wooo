@@ -60,6 +60,7 @@ wooo.stylin {
         -webkit-mask-image: radial-gradient(transparent 10%, black);
         animation: shake 400ms infinite;
         pointer-events: none;
+        align-self: center;
     }
 
     #mute {
