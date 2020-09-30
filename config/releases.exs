@@ -5,7 +5,8 @@ config :logger, level: :warn
 config :wooo, WoooWeb.Endpoint,
   server: true,
   cache_static_manifest: "priv/static/cache_manifest.json",
-  version: Application.spec(:wooo, :vsn) |> to_string()
+  version: Application.spec(:wooo, :vsn) |> to_string(),
+  force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
 secret_key_base =
   System.get_env("SECRET_KEY_BASE") ||
