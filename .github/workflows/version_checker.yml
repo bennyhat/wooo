@@ -13,5 +13,5 @@ jobs:
           echo $GITHUB_REF
           echo ${{ github.head_ref }}
           echo ${{ github.event.pull_request.head.sha }}
-	  git fetch refs/heads/*
+	  git fetch refs/heads/${{ github.head_ref }}
           git diff refs/heads/${{ github.head_ref }}
