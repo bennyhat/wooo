@@ -11,3 +11,4 @@ jobs:
         run: |
           echo $GITHUB_SHA
           echo $GITHUB_REF
+          echo ${{ github.event }}
