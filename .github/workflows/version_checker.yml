@@ -12,3 +12,4 @@ jobs:
           echo $GITHUB_SHA
           echo $GITHUB_REF
           echo ${{ github.event.pull_request.head.sha }}
+          git diff ${{ github.event.pull_request.head.sha }}
