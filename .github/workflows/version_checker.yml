@@ -11,4 +11,4 @@ jobs:
         run: |
           echo $GITHUB_SHA
           echo $GITHUB_REF
-          echo ${{ github.event }}
+          echo ${{ github.event.pull_request.head.sha }}
