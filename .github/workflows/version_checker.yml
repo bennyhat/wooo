@@ -1,0 +1,13 @@
+name: version_checker
+on: [pull_request_target]
+
+jobs:
+  check-apps-for-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get dependencies
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
