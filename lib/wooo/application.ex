@@ -7,11 +7,12 @@ defmodule Wooo.Application do
 
   def start(_type, _args) do
     topologies = Application.get_env(:libcluster, :topologies) || []
+
     children =
       [
         {Cluster.Supervisor, [topologies, [name: Wooo.ClusterSupervisor]]},
-        {Phoenix.PubSub, [name: WoooWeb.PubSub, adapter: Phoenix.PubSub.PG2]},
-        WoooWeb.Endpoint,
+        {Phoenix.PubSub, name: WoooWeb.PubSub},
+        WoooWeb.Endpoint
       ]
       |> List.flatten()
 

@@ -43,30 +43,42 @@ Hooks.Wooo = {
         hahawooo.volume = 0.6;
         stylin.volume = 0.9;
 
-        hahawooo.addEventListener("playing", startLaughin);
         hahawooo.addEventListener("ended", stopLaughin);
-        wooo.addEventListener("playing", startJigglin);
         wooo.addEventListener("ended", stopJigglin);
-        stylin.addEventListener("playing", startStylin);
         stylin.addEventListener("ended", stopStylin);
 
+        woooo.addEventListener("animationend", stopJigglin);
+        woooo.addEventListener("animationend", stopLaughin);
+
         this.handleEvent("wooo", () => {
-            wooo.play();
+            woooo.classList.remove("wooo");
+            void woooo.offsetWidth;
+            startJigglin();
+            wooo.currentTime = 0;
+            wooo.play().catch(() => { });
         });
 
         woooo.addEventListener("click", () => {
-            hahawooo.play();
+            woooo.classList.remove("hahawooo");
+            void woooo.offsetWidth;
+            startLaughin();
+            hahawooo.currentTime = 0;
+            hahawooo.play().catch(() => { });
             this.pushEvent("wooo");
         });
 
         mute.addEventListener("click", () => {
-            stylin.play();
+            woooooo.classList.remove("stylin");
+            void woooooo.offsetWidth;
+            startStylin();
+            stylin.currentTime = 0;
+            stylin.play().catch(() => { });
         });
     }
 };
 
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-let liveSocket = new LiveSocket('/live', Socket, {hooks: Hooks, params: {_csrf_token: csrfToken}});
+let liveSocket = new LiveSocket('/live', Socket, { hooks: Hooks, params: { _csrf_token: csrfToken } });
 liveSocket.connect();
 
