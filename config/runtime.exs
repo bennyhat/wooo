@@ -15,11 +15,11 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret 32
       """
 
-  hostname =
-    System.get_env("HOSTNAME") ||
+  host =
+    System.get_env("PHX_HOST") ||
       raise """
-      environment variable HOSTNAME is missing.
-      Please set it to what you expect the production site to be accessed with
+      environment variable PHX_HOST is missing.
+      Please set it to the public hostname for the production site
       """
 
   port =
@@ -44,7 +44,7 @@ if config_env() == :prod do
       transport_options: [socket_opts: [:inet6]]
     ],
     check_origin: allowed_origins_list,
-    url: [host: hostname, port: 443],
+    url: [host: host, port: 443],
     secret_key_base: secret_key_base,
     live_view: [signing_salt: live_view_signing_salt]
 
