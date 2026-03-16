@@ -1,9 +1,10 @@
 import Config
 
-port = case System.get_env("PORT") do
-         nil -> 4000
-         string_port -> String.to_integer(string_port)
-       end
+port =
+  case System.get_env("PORT") do
+    nil -> 4000
+    string_port -> String.to_integer(string_port)
+  end
 
 config :wooo, WoooWeb.Endpoint,
   http: [port: port],
@@ -15,7 +16,7 @@ config :wooo, WoooWeb.Endpoint,
       "node_modules/webpack/bin/webpack.js",
       "--mode",
       "development",
-      "--watch-stdin",
+      "--watch",
       cd: Path.expand("../assets", __DIR__)
     ]
   ]
@@ -25,7 +26,7 @@ config :wooo, WoooWeb.Endpoint,
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/wooo_web/.*(ex)$},
+      ~r{lib/wooo_web/.*(ex)$}
     ]
   ]
 
