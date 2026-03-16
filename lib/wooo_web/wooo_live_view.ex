@@ -3,21 +3,20 @@ defmodule WoooWeb.WoooLiveView do
   The main view for the Wooo-ing
   """
   use Phoenix.LiveView
-  alias WoooWeb.Router.Helpers, as: Routes
 
   def render(assigns) do
-    ~L"""
+    ~H"""
     <wooo>
       <div id="mute"><p>MUTE</p></div>
       <img id="woooo" src="images/woooo.jpg" alt="Ric Flair wooing the words 'woooooooooooooo'"/>
       <audio id="wooo" phx-hook="Wooo" preload="auto">
-        <source src="https://peal.io/download/ofp0f" type="audio/mpeg">
+        <source src="https://peal.io/download/ofp0f" type="audio/mpeg" />
       </audio>
       <audio id="hahawooo" preload="auto">
-        <source src="media/haha-wooo.mp3" type="audio/mpeg">
+        <source src="media/haha-wooo.mp3" type="audio/mpeg" />
       </audio>
       <audio id="stylin" preload="auto">
-        <source src="media/style-profile.mp3" type="audio/mpeg">
+        <source src="media/style-profile.mp3" type="audio/mpeg" />
       </audio>
     </wooo>
     """

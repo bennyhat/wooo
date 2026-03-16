@@ -14,12 +14,13 @@ defmodule WoooWeb.Router do
     plug :fetch_session
     plug :fetch_live_flash
     plug :protect_from_forgery
+    plug :put_root_layout, html: {WoooWeb.LayoutView, :root}
     plug WoooWeb.Plugs.Csp
   end
 
   scope "/", WoooWeb do
     pipe_through :browser
 
-    live "/", WoooLiveView, layout: {WoooWeb.LayoutView, :root}
+    live "/", WoooLiveView
   end
 end

@@ -5,9 +5,8 @@ defmodule Wooo.MixProject do
     [
       app: :wooo,
       version: "0.1.0",
-      elixir: "~> 1.10",
+      elixir: "~> 1.17",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -26,21 +25,21 @@ defmodule Wooo.MixProject do
 
   defp deps do
     [
-      {:distillery, "~> 2.1"},
-      {:phoenix, "~> 1.5"},
-      {:phoenix_ecto, "~> 4.1"},
-      {:phoenix_live_view, "~> 0.14.4"},
-      {:ecto_sql, "~> 3.4"},
+      {:phoenix, "~> 1.7"},
+      {:phoenix_ecto, "~> 4.6"},
+      {:phoenix_live_view, "~> 1.0"},
+      {:ecto_sql, "~> 3.12"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 2.11"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_dashboard, "~> 0.2.0"},
-      {:telemetry_metrics, "~> 0.4"},
-      {:telemetry_poller, "~> 0.4"},
-      {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"},
-      {:libcluster, "~> 3.2"}
+      {:phoenix_view, "~> 2.0"},
+      {:phoenix_html, "~> 3.3"},
+      {:phoenix_live_reload, "~> 1.5", only: :dev},
+      {:phoenix_live_dashboard, "~> 0.8"},
+      {:telemetry_metrics, "~> 1.0"},
+      {:telemetry_poller, "~> 1.1"},
+      {:gettext, "~> 0.26"},
+      {:jason, "~> 1.4"},
+      {:plug_cowboy, "~> 2.7"},
+      {:libcluster, "~> 3.4"}
     ]
   end
 
