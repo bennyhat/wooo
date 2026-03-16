@@ -1,19 +1,18 @@
 const path = require('path');
-const glob = require('glob');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, options) => ({
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({ cache: true, parallel: true, sourceMap: false }),
-      new OptimizeCSSAssetsPlugin({})
+      new TerserPlugin(),
+      new CssMinimizerPlugin()
     ]
   },
   entry: {
-      './js/app.js': ['./js/app.js'].concat(glob.sync('./vendor/**/*.js'))
+    './js/app.js': './js/app.js'
   },
   output: {
     filename: 'app.js',
@@ -31,25 +30,20 @@ module.exports = (env, options) => ({
       {
         test: /\.(css|scss)$/,
         use: [
-          MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+          MiniCssExtractPlugin.loader, 'css-loader', { loader: 'sass-loader', options: { api: 'modern' } }
         ]
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: '../fonts/'
-            }
-          }
-        ]
+        type: 'asset/resource',
+        generator: {
+          filename: '../fonts/[name][ext]'
+        }
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: '../css/stylin.css' }),
-    new CopyWebpackPlugin({patterns: [{from: 'static/', to: '../'}]})
+    new CopyWebpackPlugin({ patterns: [{ from: 'static/', to: '../' }] })
   ]
 });
