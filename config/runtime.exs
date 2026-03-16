@@ -38,20 +38,6 @@ if config_env() == :prod do
 
   allowed_origins_list = String.split(allowed_origins, ",")
 
-  libcluster_k8s_selector =
-    System.get_env("LIBCLUSTER_KUBERNETES_SELECTOR") ||
-      raise """
-      environment variable LIBCLUSTER_KUBERNETES_SELECTOR is missing.
-      Please set it to what you expect the production site to cluster with
-      """
-
-  libcluster_k8s_node_basename =
-    System.get_env("LIBCLUSTER_KUBERNETES_NODE_BASENAME") ||
-      raise """
-      environment variable LIBCLUSTER_KUBERNETES_NODE_BASENAME is missing.
-      Please set it to what you expect the production site to cluster with
-      """
-
   config :wooo, WoooWeb.Endpoint,
     http: [
       port: String.to_integer(port),
@@ -65,14 +51,19 @@ if config_env() == :prod do
   config :wooo,
     csp_connect_sources: Enum.map(allowed_origins_list, &String.replace(&1, "//", "wss://"))
 
-  config :libcluster,
-    topologies: [
-      k8s: [
-        strategy: Cluster.Strategy.Kubernetes,
-        config: [
-          kubernetes_selector: libcluster_k8s_selector,
-          kubernetes_node_basename: libcluster_k8s_node_basename
+  libcluster_k8s_selector = System.get_env("LIBCLUSTER_KUBERNETES_SELECTOR")
+  libcluster_k8s_node_basename = System.get_env("LIBCLUSTER_KUBERNETES_NODE_BASENAME")
+
+  if libcluster_k8s_selector && libcluster_k8s_node_basename do
+    config :libcluster,
+      topologies: [
+        k8s: [
+          strategy: Cluster.Strategy.Kubernetes,
+          config: [
+            kubernetes_selector: libcluster_k8s_selector,
+            kubernetes_node_basename: libcluster_k8s_node_basename
+          ]
         ]
       ]
-    ]
+  end
 end
